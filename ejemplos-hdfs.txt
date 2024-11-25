@@ -1,0 +1,28 @@
+hdfs dfs -ls /
+hdfs dfs -mkdir /data
+hdfs dfs -mkdir /data/openbeer
+hdfs dfs -mkdir /data/openbeer/breweries
+hdfs dfs -ls /
+cd /vagrant
+hdfs dfs -put breweries.csv /data/openbeer/breweries
+hdfs dfs -ls /data/openbeer/breweries
+hdfs fsck /data/openbeer/breweries/breweries.csv
+
+
+
+echo "foo foo quux labs foo bar quux" | ./python-map-reduce/mapper.py
+echo "foo foo quux labs foo bar quux" | ./python-map-reduce/mapper.py | sort -k1,1 | ./python-map-reduce/reducer.py
+
+cd /vagrant
+hdfs dfs -ls hdfs://localhost:8020/data/openbeer/breweries
+cp ./python-map-reduce/mapper.py ~/
+cp ./python-map-reduce/reducer.py ~/
+chmod +x ~/mapper.py
+chmod +x ~/reducer.py
+
+hdfs dfs -rm -r /breweries_count_w_1
+
+hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.3.5.jar -input /data/openbeer/breweries -output /breweries_count_w_1 -file /home/vagrant/mapper.py -mapper mapper.py -file /home/vagrant/reducer.py -reducer reducer.py
+
+hdfs dfs -ls hdfs://localhost:8020/breweries_count_w_1
+hdfs dfs -cat hdfs://localhost:8020//breweries_count_w_1/part-00000

@@ -1,0 +1,32 @@
+ls -l:
+total 44
+-rw-r--r-- 1 vagrant vagrant  105 Nov 25 06:16 container_tokens
+-rwx------ 1 vagrant vagrant  683 Nov 25 06:16 default_container_executor_session.sh
+-rwx------ 1 vagrant vagrant  738 Nov 25 06:16 default_container_executor.sh
+lrwxrwxrwx 1 vagrant vagrant  111 Nov 25 06:16 job.jar -> /tmp/hadoop-vagrant/nm-local-dir/usercache/vagrant/appcache/application_1732511382050_0005/filecache/11/job.jar
+drwxrwxr-x 2 vagrant vagrant 4096 Nov 25 06:16 jobSubmitDir
+lrwxrwxrwx 1 vagrant vagrant  111 Nov 25 06:16 job.xml -> /tmp/hadoop-vagrant/nm-local-dir/usercache/vagrant/appcache/application_1732511382050_0005/filecache/13/job.xml
+-rwx------ 1 vagrant vagrant 5557 Nov 25 06:16 launch_container.sh
+lrwxrwxrwx 1 vagrant vagrant   73 Nov 25 06:16 mapper.py -> /tmp/hadoop-vagrant/nm-local-dir/usercache/vagrant/filecache/18/mapper.py
+lrwxrwxrwx 1 vagrant vagrant   74 Nov 25 06:16 reducer.py -> /tmp/hadoop-vagrant/nm-local-dir/usercache/vagrant/filecache/19/reducer.py
+drwx--x--- 2 vagrant vagrant 4096 Nov 25 06:16 tmp
+find -L . -maxdepth 5 -ls:
+   524524      4 drwx--x---   4 vagrant  vagrant      4096 Nov 25 06:16 .
+   524500      4 -r-x------   1 vagrant  vagrant       232 Nov 25 06:16 ./mapper.py
+   524526      4 -rw-r--r--   1 vagrant  vagrant       105 Nov 25 06:16 ./container_tokens
+   524510      4 drwx------   2 vagrant  vagrant      4096 Nov 25 06:16 ./job.jar
+   524511    140 -r-x------   1 vagrant  vagrant    140027 Nov 25 06:16 ./job.jar/job.jar
+   524529      4 -rw-r--r--   1 vagrant  vagrant        52 Nov 25 06:16 ./.launch_container.sh.crc
+   524531      4 -rw-r--r--   1 vagrant  vagrant        16 Nov 25 06:16 ./.default_container_executor_session.sh.crc
+   524504      4 -r-x------   1 vagrant  vagrant       756 Nov 25 06:16 ./reducer.py
+   524533      4 -rw-r--r--   1 vagrant  vagrant        16 Nov 25 06:16 ./.default_container_executor.sh.crc
+   524532      4 -rwx------   1 vagrant  vagrant       738 Nov 25 06:16 ./default_container_executor.sh
+   524516    236 -r-x------   1 vagrant  vagrant    239070 Nov 25 06:16 ./job.xml
+   524530      4 -rwx------   1 vagrant  vagrant       683 Nov 25 06:16 ./default_container_executor_session.sh
+   524535      4 drwxrwxr-x   2 vagrant  vagrant      4096 Nov 25 06:16 ./jobSubmitDir
+   524507      4 -r-x------   1 vagrant  vagrant        36 Nov 25 06:16 ./jobSubmitDir/job.splitmetainfo
+   524513      4 -r-x------   1 vagrant  vagrant       229 Nov 25 06:16 ./jobSubmitDir/job.split
+   524525      4 drwx--x---   2 vagrant  vagrant      4096 Nov 25 06:16 ./tmp
+   524528      8 -rwx------   1 vagrant  vagrant      5557 Nov 25 06:16 ./launch_container.sh
+   524527      4 -rw-r--r--   1 vagrant  vagrant        12 Nov 25 06:16 ./.container_tokens.crc
+broken symlinks(find -L . -maxdepth 5 -type l -ls):
